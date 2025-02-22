@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -12,29 +11,37 @@ const SignIn = () => {
 
   return (
     <div style={styles.container}>
-      <h2>Login</h2>
+      <h2>Sign In</h2>
       <form onSubmit={handleSubmit} style={styles.form}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          style={styles.input}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          style={styles.input}
-          required
-        />
+        <div style={styles.formGroup}>
+          <label htmlFor="email" style={styles.label}>Email:</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            style={styles.input}
+            required
+          />
+        </div>
+        <div style={styles.formGroup}>
+          <label htmlFor="password" style={styles.label}>Password:</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            style={styles.input}
+            required
+          />
+        </div>
         <button type="submit" style={styles.button}>
-          Login
+          Sign In
         </button>
       </form>
-      <Link to="/" style={styles.link}>Back to Home</Link>
+      <a href="/signup" style={styles.link}>Don't have an account? Sign Up</a>
     </div>
   );
 };
@@ -51,9 +58,17 @@ const styles = {
     flexDirection: 'column',
     width: '300px',
   },
+  formGroup: {
+    marginBottom: '15px',
+  },
+  label: {
+    display: 'block',
+    marginBottom: '5px',
+    fontWeight: 'bold',
+  },
   input: {
+    width: '100%',
     padding: '10px',
-    margin: '10px 0',
     border: '1px solid #ccc',
     borderRadius: '5px',
     fontSize: '16px',
